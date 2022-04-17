@@ -1,0 +1,13 @@
+LICENSE.md
+.prettierignore
+pnpm-lock.yaml
+pnpm-workspace.yaml
+/dist/*
+.local
+.output.js
+/node_modules/**
+
+**/*.svg
+**/*.sh
+
+/public/*
