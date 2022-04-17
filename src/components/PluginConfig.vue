@@ -27,7 +27,7 @@ export default defineComponent({
       currentRef.name = props.current.name
     })
 
-    const change = ({ target }) => {
+    const change = ({ target }: any) => {
       store.commit('setFormPluginItem', {
         id: props.current.id,
         changeProp: 'name',
