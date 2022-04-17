@@ -1,0 +1,69 @@
+/* 仅做初次测试用例，需重新编写样式文件 */
+
+.rosy-button {
+  padding: 8px 15px;
+  border-radius: 4px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-width: 1px;
+  font-size: 14px;
+  transition: background-color 0.26s, box-shadow 0.26s;
+
+  &+.rosy-button {
+    margin-left: 10px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &.default {
+    color: #ffffff;
+  }
+
+  &-primary {
+    background-color: #ff466b;
+
+    &:hover {
+      background-color: #fe5f7f;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 2px #ff003342;
+      background-color: #fe5f7f;
+    }
+  }
+
+  &-success {
+    background-color: #67c23a;
+
+    &:hover {
+      background-color: #67c23ace;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 2px #55ff0031;
+      background-color: #67c23ace;
+    }
+  }
+
+  &-large {
+    padding: 12px 19px;
+    font-size: 14px;
+  }
+
+  &-small {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  &-mini {
+    padding: 5px 11px;
+    font-size: 12px;
+  }
+}
