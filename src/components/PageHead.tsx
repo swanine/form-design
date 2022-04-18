@@ -7,7 +7,7 @@ export default defineComponent({
       return (
         <>
           <header class="head__container">
-            <span>可视化表单生成器</span>
+            <span>表单设计</span>
             <div class="button_group">
               <Rbutton>预览</Rbutton>
             </div>

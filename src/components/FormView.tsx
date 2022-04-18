@@ -12,16 +12,14 @@ export default defineComponent({
     return () => {
       return (
         <>
-          <main class="form_overview">
+          <el-scrollbar>
             <div class="form_wrap">
-              <el-scrollbar>
-                <div class="form_card">
-                  <FromHead></FromHead>
-                  <FromBody></FromBody>
-                </div>
-              </el-scrollbar>
+              <div class="form_card">
+                <FromHead></FromHead>
+                <FromBody></FromBody>
+              </div>
             </div>
-          </main>
+          </el-scrollbar>
           <PluginConfig current={current.value}></PluginConfig>
         </>
       )

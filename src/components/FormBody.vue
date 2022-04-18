@@ -56,6 +56,9 @@ export default defineComponent({
 .form_body {
   padding: 20px 12px;
   height: calc(100% - 14rem);
+  box-shadow: 0 4px 10px #0c1f5014;
+  border-radius: 8px;
+  background-color: #fff;
 
   .form_list {
     display: flex;
