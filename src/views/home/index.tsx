@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import Plugins from '../../components/PluginsCard.vue'
+import PluginsWrap from '../../components/PluginsWrap'
 import FormView from '../../components/FormView'
 
 export default defineComponent({
@@ -7,7 +7,7 @@ export default defineComponent({
     return () => {
       return (
         <div class="home__wrapper">
-          <Plugins></Plugins>
+          <PluginsWrap></PluginsWrap>
           <FormView></FormView>
         </div>
       )
