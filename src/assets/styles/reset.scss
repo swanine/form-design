@@ -1,7 +1,4 @@
-@font-face {
-  font-family: sourceHanSans;
-  src: url('./思源黑体SourceHanSansCN-Regular.be37d606385ec5a4ff63.otf');
-}
+
 
 * {
   box-sizing: border-box;
@@ -30,17 +27,15 @@ body {
     line-height: 3.5rem;
     letter-spacing: 1px;
     box-shadow: 0 4px 6px #0c1f500b;
-    background-image: linear-gradient(
-      to left,
-      #faf2f4 0%,
-      #fafefa 39%,
-      #ebf2fd 50%,
-      #fef7fc 81%,
-      #fbfbee 100%
-    );
+    background-image: linear-gradient(to left,
+        #faf2f4 0%,
+        #fafefa 39%,
+        #ebf2fd 50%,
+        #fef7fc 81%,
+        #fbfbee 100%);
     z-index: 99;
 
-    & > span {
+    &>span {
       font-size: 1.3rem;
       font-weight: 600;
     }
@@ -59,18 +54,23 @@ body {
     flex: 1;
     height: calc(100% - 3.5rem);
 
-    .plugin_bar {
-      width: 16rem;
+    .plugins_wrap {
+      width: 16.5rem;
       background-color: #fff;
+
+      .el-scrollbar__view {
+        padding: 10px 25px 10px 20px;
+      }
     }
 
-    .el-scrollbar {
+    &>.el-scrollbar {
       flex: 1;
 
       .el-scrollbar__view {
         display: flex;
         justify-content: center;
         padding: 20px 20px 0;
+        min-height: 100%;
         background-color: #f9fafb;
       }
     }
@@ -126,6 +126,7 @@ body {
 
         .form_head_attach {
           margin: 0 16px;
+
           .attach_context {
             display: flex;
             align-items: center;
@@ -133,31 +134,17 @@ body {
             margin: 4px 0;
             border-radius: 3px;
             color: #aaaeb3;
+            font-size: 14px;
             cursor: pointer;
             transition: all ease 0.2s;
           }
         }
       }
 
-      .form_body {
-        .common_wrap {
-          padding: 10px 6px;
-          // border: 2px solid rgb(202, 191, 253);
-          border-radius: 6px;
-          cursor: pointer;
-          transition: background-color 0.36s,
-            box-shadow 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
-
-          &:hover {
-            background-color: rgb(237, 235, 254);
-          }
-
-          .plugin_title {
-            padding: 4px 0 10px;
-            font-size: 0.875rem;
-            min-height: 1.875rem;
-          }
-        }
+      .plugin_title {
+        padding: 4px 0 10px;
+        font-size: 0.875rem;
+        min-height: 1.875rem;
       }
     }
   }
