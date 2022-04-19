@@ -1,12 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/starpixel.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>表单设计</title>
+    <style>
+      .loader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: yellowgreen;
+        height: 100vh;
+        width: 100vw;
+        z-index: 999;
+      }
+    </style>
   </head>
   <body>
+    <div class="loader">
+      <div class="ball-scale-ripple-multiple">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
