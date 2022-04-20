@@ -14,7 +14,9 @@ specifiers:
   eslint-plugin-import: ^2.25.2
   eslint-plugin-prettier: ^4.0.0
   eslint-plugin-vue: ^8.6.0
+  hint.css: ^2.7.0
   intro.js: ^5.1.0
+  loaders.css: ^0.1.2
   prettier: ^2.6.2
   sass: ^1.50.0
   typescript: ^4.5.4
@@ -31,7 +33,9 @@ dependencies:
   '@typescript-eslint/parser': 5.19.0_eslint@8.13.0+typescript@4.6.3
   element-plus: 2.1.9_vue@3.2.33
   eslint-plugin-import: 2.26.0_eslint@8.13.0
+  hint.css: 2.7.0
   intro.js: 5.1.0
+  loaders.css: 0.1.2
   vue: 3.2.33
   vue-router: 4.0.14_vue@3.2.33
   vuedraggable: 4.1.0_vue@3.2.33
@@ -1897,6 +1901,10 @@ packages:
     resolution: {integrity: sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg==}
     dev: true
 
+  /hint.css/2.7.0:
+    resolution: {integrity: sha512-kNtr/oXTOFA+qYLFAHY1dKVKZuAbavCPB22+w9kaFzqjB9ZLSFJyksxrVsJCphQiQxAYLazXZdrOaGLRe0hZMA==}
+    dev: false
+
   /html-tags/3.2.0:
     resolution: {integrity: sha512-vy7ClnArOZwCnqZgvv+ddgHgJiAFXe3Ge9ML5/mBctVJoUoYPCdxVucOywjDARn6CVoh3dRSFdPHy2sX80L0Wg==}
     engines: {node: '>=8'}
@@ -2121,6 +2129,10 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
     dev: true
+
+  /loaders.css/0.1.2:
+    resolution: {integrity: sha1-Op+0NybHMzSjgUKvnQYpAZtlh0M=}
+    dev: false
 
   /local-pkg/0.4.1:
     resolution: {integrity: sha512-lL87ytIGP2FU5PWwNDo0w3WhIo2gopIAxPg9RxDYF7m4rr5ahuZxP22xnJHIvaLTe4Z9P6uKKY2UHiwyB4pcrw==}
