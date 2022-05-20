@@ -20,6 +20,9 @@ export const buttonProps = {
   disabled: {
     type: Boolean,
     default: false
+  },
+  onClick: {
+    type: Function
   }
 } as const
 

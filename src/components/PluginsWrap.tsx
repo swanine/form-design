@@ -5,22 +5,27 @@ import introJs from 'intro.js'
 export default defineComponent({
   setup() {
     onMounted(() => {
-      introJs()
-        .setOptions({
-          prevLabel: '上一步',
-          nextLabel: '下一步',
-          skipLabel: '跳过',
-          doneLabel: '结束',
-          tooltipPosition: 'right',
-          positionPrecedence: ["right", "bottom", "left", "top"],
-        })
-        .oncomplete(function () {
-          //点击跳过按钮后执行的事件
-        })
-        .onexit(function () {
-          //点击结束按钮后， 执行的事件
-        })
-        .start()
+      const isIntroJs = localStorage.getItem('course') || false
+
+      !isIntroJs &&
+        introJs()
+          .setOptions({
+            prevLabel: '上一步',
+            nextLabel: '下一步',
+            skipLabel: '跳过',
+            doneLabel: '结束',
+            tooltipPosition: 'right',
+            positionPrecedence: ['right', 'bottom', 'left', 'top']
+          })
+          .oncomplete(function () {
+            //点击跳过按钮后执行的事件
+          })
+          .onexit(function () {
+            //点击结束按钮后， 执行的事件
+          })
+          .start()
+
+      localStorage.setItem('course', 'course')
     })
     return () => {
       return (

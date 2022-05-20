@@ -1,8 +1,18 @@
 import { defineComponent } from 'vue'
+import { useStore } from 'vuex'
 import Rbutton from '../rosy-ui/button/index'
 
 export default defineComponent({
   setup() {
+    const store = useStore()
+    const handleClick = () => {
+      store.commit('changePreview', true)
+      const mask = document.querySelector('.mask .el-scrollbar__view')
+      mask?.addEventListener('click', (e) => {
+        mask === e.target && store.commit('changePreview', false)
+      })
+    }
+
     return () => {
       return (
         <>
@@ -13,7 +23,7 @@ export default defineComponent({
               data-step="4"
               data-intro="最后点击预览查看你设计的表单，当然实现这个功能还早着呢😅"
             >
-              <Rbutton>预览</Rbutton>
+              <Rbutton onClick={handleClick}>预览</Rbutton>
             </div>
           </header>
         </>

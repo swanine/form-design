@@ -18,7 +18,8 @@ const store = createStore<IRootState>({
       ],
       currentSelectPlugin: {
         name: ''
-      }
+      },
+      previewClass: false
     }
   },
   mutations: {
@@ -36,6 +37,9 @@ const store = createStore<IRootState>({
       const { id, changeProp, changeValue } = payload
       const targetItem = state.formPluginList.find((item) => item.id === id)
       targetItem[changeProp] = changeValue
+    },
+    changePreview(state, val) {
+      state.previewClass = val
     }
   },
   getters: {

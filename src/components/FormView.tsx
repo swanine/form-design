@@ -1,18 +1,13 @@
-import { computed, defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
 import FromHead from './FormHead'
 import FromBody from './FormBody.vue'
-import PluginConfig from './PluginConfig.vue'
-import { useStore } from 'vuex'
 
 export default defineComponent({
   setup() {
-    const store = useStore()
-    const current = computed(() => store.state.currentSelectPlugin)
-
     return () => {
       return (
         <>
-          <el-scrollbar>
+          <el-scrollbar class="mask">
             <div class="form_wrap">
               <div class="form_card">
                 <FromHead></FromHead>
@@ -20,7 +15,6 @@ export default defineComponent({
               </div>
             </div>
           </el-scrollbar>
-          <PluginConfig current={current.value}></PluginConfig>
         </>
       )
     }

@@ -5,4 +5,5 @@ export interface IPlugin {
 export interface IRootState {
   currentSelectPlugin: IPlugin
   formPluginList: any[]
+  previewClass: boolean
 }

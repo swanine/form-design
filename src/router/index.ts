@@ -4,7 +4,17 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'home',
-    component: () => import('../views/index')
+    component: () => import('~/views/home')
+    // children: [
+    //   {
+    //     path: '/preview',
+    //     component: () => import('~/views/preview')
+    //   }
+    // ]
+  },
+  {
+    path: '/preview',
+    component: () => import('~/views/preview')
   }
 ]
 
