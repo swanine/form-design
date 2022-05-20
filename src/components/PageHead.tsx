@@ -7,10 +7,6 @@ export default defineComponent({
     const store = useStore()
     const handleClick = () => {
       store.commit('changePreview', true)
-      const mask = document.querySelector('.mask .el-scrollbar__view')
-      mask?.addEventListener('click', (e) => {
-        mask === e.target && store.commit('changePreview', false)
-      })
     }
 
     return () => {

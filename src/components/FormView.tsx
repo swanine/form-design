@@ -1,9 +1,19 @@
-import { defineComponent } from 'vue'
+import { defineComponent, onMounted } from 'vue'
+import { useStore } from 'vuex'
 import FromHead from './FormHead'
 import FromBody from './FormBody.vue'
 
 export default defineComponent({
   setup() {
+    const store = useStore()
+
+    onMounted(() => {
+      const mask = document.querySelector('.mask .el-scrollbar__view')
+      mask?.addEventListener('click', (e) => {
+        mask === e.target && store.commit('changePreview', false)
+      })
+    })
+
     return () => {
       return (
         <>
