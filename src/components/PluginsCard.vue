@@ -27,7 +27,7 @@
 <script lang="ts">
 import draggable from 'vuedraggable'
 import { defineComponent, computed, ref } from 'vue'
-import img from '~/assets/images/闪电pixel.svg'
+import img from '~/assets/images/pixel.svg'
 
 export default defineComponent({
   components: { draggable },
@@ -59,7 +59,7 @@ export default defineComponent({
       animation: 200
     }))
 
-    const imgsrc = img
+    const imgsrc = ref(img)
 
     const drag = ref(false)
     return {
