@@ -1,5 +1,5 @@
 import { defineComponent, PropType, ref } from 'vue'
-import { Input } from './plugins/index'
+import plugins from './plugins/index'
 import IConfig from './plugins/types/pluginConfig'
 
 export default defineComponent({
@@ -13,7 +13,14 @@ export default defineComponent({
       return (
         <>
           <div class="plugin_title">{props.config?.name}</div>
-          <Input value={props.config?.value}></Input>
+          {plugins.map((item) => {
+            if (props.config?.plugin === item.name) {
+              console.log(item)
+              return (
+                <item value={props.config?.value} type={props.config?.type} />
+              )
+            }
+          })}
         </>
       )
     }

@@ -30,6 +30,7 @@
 import draggable from 'vuedraggable'
 import { defineComponent, computed, ref } from 'vue'
 import img from '~/assets/images/pixel.svg'
+import PLUGINS from './plugins/publicPlugins'
 
 export default defineComponent({
   components: { draggable },
@@ -44,18 +45,7 @@ export default defineComponent({
     }
   },
   setup() {
-    const list = ref([
-      { name: '单行文本', id: 1 },
-      { name: '多行文本', id: 2 },
-      { name: '计数器', id: 3 },
-      { name: '下拉选择', id: 4 },
-      { name: '时间选择', id: 5 },
-      { name: '颜色选择', id: 6 },
-      { name: '按钮', id: 7 },
-      { name: '文字', id: 8 },
-      { name: '文字链接', id: 9 },
-      { name: '按钮', id: 10 }
-    ])
+    const list = ref(PLUGINS)
 
     const dragOption = computed(() => ({
       animation: 200
