@@ -9,10 +9,12 @@ declare module '@vue/runtime-core' {
     ElInput: typeof import('element-plus/es')['ElInput']
     FormBody: typeof import('./src/components/FormBody.vue')['default']
     Input: typeof import('./src/components/plugins/Input.vue')['default']
+    'Input copy': typeof import('./src/components/plugins/Input copy.vue')['default']
     PluginConfig: typeof import('./src/components/PluginConfig.vue')['default']
     PluginsCard: typeof import('./src/components/PluginsCard.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Textarea: typeof import('./src/components/plugins/Textarea.vue')['default']
   }
 }
 

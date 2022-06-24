@@ -1,20 +1,25 @@
 <template>
-  <el-input :type="type" v-model="selfValue" placeholder="Please input" />
+  <el-input
+    v-model="selfValue"
+    :autosize="{ minRows: rows, maxRows: 4 }"
+    type="textarea"
+    placeholder="Please input"
+  />
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
-  name: 'Input',
+  name: 'Textarea',
   props: {
     value: {
       type: String,
       default: ''
     },
-    type: {
-      type: String,
-      default: 'text'
+    rows: {
+      type: Number,
+      default: 3
     }
   },
   setup(props) {
