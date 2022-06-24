@@ -7,4 +7,5 @@ export default interface IConfig {
   width?: number
   placeholder?: string
   required?: boolean
+  plugin: string
 }
