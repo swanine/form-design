@@ -25,17 +25,15 @@ body {
     line-height: 3.5rem;
     letter-spacing: 1px;
     box-shadow: 0 4px 6px #0c1f500b;
-    background-image: linear-gradient(
-      to left,
-      #faf2f4 0%,
-      #fafefa 39%,
-      #ebf2fd 50%,
-      #fef7fc 81%,
-      #fbfbee 100%
-    );
+    background-image: linear-gradient(to left,
+        #faf2f4 0%,
+        #fafefa 39%,
+        #ebf2fd 50%,
+        #fef7fc 81%,
+        #fbfbee 100%);
     z-index: 99;
 
-    & > span {
+    &>span {
       font-size: 1.3rem;
       font-weight: 600;
     }
@@ -54,11 +52,11 @@ body {
     flex: 1;
     height: calc(100% - 3.5rem);
 
-    > .el-scrollbar {
+    >.el-scrollbar {
       flex: 1;
       transition-property: background-color, backdrop-filter, position, z-index;
       transition-duration: .3s;
-      transition-timing-function:cubic-bezier(0.55, 0.085, 0.68, 0.53);
+      transition-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
 
 
       .el-scrollbar__view {
@@ -100,6 +98,17 @@ body {
         background-color: #f4f5f5;
       }
 
+      & .is_inset {
+        background-color: #f4f5f5;
+
+        input {
+          padding: 0;
+          border: none;
+          outline: none;
+          background-color: transparent;
+        }
+      }
+
       .form_head_main {
         flex: 1;
         background-color: #fff;
@@ -125,6 +134,12 @@ body {
             color: #131416;
             cursor: pointer;
             transition: all ease 0.2s;
+
+            input {
+              font-size: 20px;
+              font-weight: bold;
+              color: #131416;
+            }
           }
         }
       }
@@ -155,7 +170,7 @@ body {
 }
 
 .preview {
-  .home__wrapper > .el-scrollbar {
+  .home__wrapper>.el-scrollbar {
     position: fixed;
     width: 100vw;
     height: 100vh;

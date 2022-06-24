@@ -13,7 +13,7 @@
     >
       <template #item="{ element }">
         <div
-          :class="['common_wrap', { select_: current.id === element.id }]"
+          :class="['common_wrap', { select_: current === element }]"
           :style="{ width: element.width }"
           @click="selectPlugin(element)"
         >
@@ -45,11 +45,13 @@ export default defineComponent({
         return store.state.formPluginList
       },
       set(val) {
+        console.log(val)
         store.commit('resetFormPluginList', val)
       }
     })
 
     const selectPlugin = (item: IConfig) => {
+      console.log(item)
       store.commit('setCurrentSelectPlugin', item)
     }
 
@@ -94,7 +96,7 @@ export default defineComponent({
         background-color: rgb(247, 247, 247);
       }
 
-      ::v-deep .el-input__inner {
+      :deep(.el-input__inner) {
         pointer-events: none;
       }
     }

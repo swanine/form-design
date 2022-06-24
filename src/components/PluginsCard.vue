@@ -8,6 +8,8 @@
       item-key="id"
       :group="{ name: 'people', pull: 'clone', put: false }"
       :sort="false"
+      :clone="clonePlugin"
+      @change="log"
       @start="drag = true"
       @end="drag = false"
     >
@@ -59,6 +61,22 @@ export default defineComponent({
       animation: 200
     }))
 
+    const log = (evt: any) => {
+      window.console.log(evt)
+    }
+
+    // 组件id用于选择
+    const globalID = ref(list.value.length)
+    const clonePlugin = (item: any) => {
+      // 返回新对象
+      return {
+        ...item,
+        // eslint-disable-next-line no-plusplus
+        id: ++globalID.value,
+        width: '50%'
+      }
+    }
+
     const imgsrc = ref(img)
 
     const drag = ref(false)
@@ -66,7 +84,9 @@ export default defineComponent({
       list,
       dragOption,
       drag,
-      imgsrc
+      imgsrc,
+      log,
+      clonePlugin
     }
   }
 })
