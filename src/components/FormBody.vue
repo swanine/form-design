@@ -45,13 +45,11 @@ export default defineComponent({
         return store.state.formPluginList
       },
       set(val) {
-        console.log(val)
         store.commit('resetFormPluginList', val)
       }
     })
 
     const selectPlugin = (item: IConfig) => {
-      console.log(item)
       store.commit('setCurrentSelectPlugin', item)
     }
 
