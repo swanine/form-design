@@ -5,7 +5,7 @@ import introJs from 'intro.js'
 export default defineComponent({
   setup() {
     onMounted(() => {
-      const isIntroJs = localStorage.getItem('course') || false
+      const isIntroJs = localStorage.getItem('course') ?? false
 
       !isIntroJs &&
         introJs()
@@ -22,10 +22,10 @@ export default defineComponent({
           })
           .onexit(function () {
             //点击结束按钮后， 执行的事件
+            // 只有用户点击结束，才在下次取消指引
+            localStorage.setItem('course', 'course')
           })
           .start()
-
-      localStorage.setItem('course', 'course')
     })
     return () => {
       return (
