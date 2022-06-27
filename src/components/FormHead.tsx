@@ -7,7 +7,7 @@ export default defineComponent({
       mounted: function (el: HTMLInputElement, bind) {
         el.focus()
 
-        // 这里拿到Mutations调用
+        // 这里拿到指令参数bind，Mutations调用
         el.onkeyup = function (e: KeyboardEvent) {
           if (e.key === 'Enter') {
             bind.value((this as HTMLInputElement).value)
@@ -17,6 +17,10 @@ export default defineComponent({
     }
   },
   setup() {
+    /**
+     * TODO: bug
+     * 修改内容点击下一input未赋值
+     */
     /*
       TODO
       下面这里是一个优化点：
@@ -57,6 +61,8 @@ export default defineComponent({
         })
         currentFormInfoName.value = ''
       }
+
+      // 只有点击头部信息输入才触发事件
       const names = ['name', 'description']
       if (names.includes(currentFormInfoName.value)) {
         window.addEventListener('click', callback)
