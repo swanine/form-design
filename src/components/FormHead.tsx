@@ -4,7 +4,7 @@ import { useStore, mapGetters } from 'vuex'
 export default defineComponent({
   directives: {
     focus: {
-      mounted: function (el: HTMLInputElement, bind) {
+      mounted(el: HTMLInputElement, bind) {
         el.focus()
 
         // 这里拿到指令参数bind，Mutations调用
@@ -38,6 +38,9 @@ export default defineComponent({
     const currentFormInfoName = ref('')
     // 修改表单信息
     const changeInfo = (event: MouseEvent, name: string) => {
+      // 预览模式下不允许编辑
+      if (store.state.previewClass) return
+
       event.stopPropagation()
       currentFormInfoName.value = name
 
@@ -72,16 +75,18 @@ export default defineComponent({
       window.removeEventListener('click', callback)
     }
 
-    const getFormInfo = store.getters.getFormInfo
+    const { getFormInfo } = store.getters
     const formInfoName = ref(getFormInfo('name'))
     const formInfoDesc = ref(getFormInfo('description'))
 
     return () => {
+      const isPreview = store.state.previewClass
+
       return (
         <div
-          class="form_head"
+          class={['form_head', { preview_mode: isPreview }]}
           data-step="2"
-          data-intro="在这里对表单进行名称及描述设置☝，还没做"
+          data-intro="在这里对表单进行名称及描述设置"
         >
           <div class="form_head_main">
             <img

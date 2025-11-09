@@ -1,13 +1,11 @@
 <template>
-  <el-input
-    :type="type"
+  <el-input-number
     v-model="selfValue"
-    :placeholder="placeholder || 'Please input'"
+    :min="min !== undefined ? min : 0"
+    :max="max !== undefined ? max : 100"
     :disabled="disabled"
     :readonly="readonly"
-    :maxlength="max"
-    :minlength="min"
-    :show-word-limit="!!max"
+    :placeholder="placeholder"
   />
 </template>
 
@@ -15,19 +13,19 @@
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
-  name: 'Input',
+  name: 'Counter',
   props: {
     value: {
-      type: String,
-      default: ''
+      type: Number,
+      default: 0
     },
-    type: {
-      type: String,
-      default: 'text'
+    min: {
+      type: Number,
+      default: undefined
     },
-    placeholder: {
-      type: String,
-      default: ''
+    max: {
+      type: Number,
+      default: undefined
     },
     disabled: {
       type: Boolean,
@@ -37,13 +35,9 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
-    min: {
-      type: Number,
-      default: undefined
-    },
-    max: {
-      type: Number,
-      default: undefined
+    placeholder: {
+      type: String,
+      default: ''
     }
   },
   setup(props) {

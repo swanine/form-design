@@ -1,6 +1,7 @@
 import { defineComponent, onMounted } from 'vue'
-import PluginsCard from './PluginsCard.vue'
 import introJs from 'intro.js'
+import PluginsCard from './PluginsCard.vue'
+import ADVANCED_PLUGINS from './plugins/advancedPlugins'
 
 export default defineComponent({
   setup() {
@@ -18,10 +19,10 @@ export default defineComponent({
             positionPrecedence: ['right', 'bottom', 'left', 'top']
           })
           .oncomplete(function () {
-            //点击跳过按钮后执行的事件
+            // 点击跳过按钮后执行的事件
           })
           .onexit(function () {
-            //点击结束按钮后， 执行的事件
+            // 点击结束按钮后， 执行的事件
             // 只有用户点击结束，才在下次取消指引
             localStorage.setItem('course', 'course')
           })
@@ -36,7 +37,10 @@ export default defineComponent({
               data-intro="拖拽字段至表单设计👉"
               data-position="bottom"
             ></PluginsCard>
-            <PluginsCard title="高级字段"></PluginsCard>
+            <PluginsCard
+              title="高级字段"
+              pluginsList={ADVANCED_PLUGINS}
+            ></PluginsCard>
           </el-scrollbar>
         </section>
       )

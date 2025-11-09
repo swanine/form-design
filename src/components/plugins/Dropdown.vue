@@ -1,29 +1,35 @@
 <template>
-  <el-input
-    :type="type"
+  <el-select
     v-model="selfValue"
-    :placeholder="placeholder || 'Please input'"
+    :placeholder="placeholder || '请选择'"
     :disabled="disabled"
-    :readonly="readonly"
-    :maxlength="max"
-    :minlength="min"
-    :show-word-limit="!!max"
-  />
+  >
+    <el-option
+      v-for="item in options"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value"
+    />
+  </el-select>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
-  name: 'Input',
+  name: 'Dropdown',
   props: {
     value: {
       type: String,
       default: ''
     },
-    type: {
-      type: String,
-      default: 'text'
+    options: {
+      type: Array,
+      default: () => [
+        { label: '选项1', value: '1' },
+        { label: '选项2', value: '2' },
+        { label: '选项3', value: '3' }
+      ]
     },
     placeholder: {
       type: String,
@@ -32,24 +38,13 @@ export default defineComponent({
     disabled: {
       type: Boolean,
       default: false
-    },
-    readonly: {
-      type: Boolean,
-      default: false
-    },
-    min: {
-      type: Number,
-      default: undefined
-    },
-    max: {
-      type: Number,
-      default: undefined
     }
   },
   setup(props) {
     const selfValue = ref(props.value)
     return {
-      selfValue
+      selfValue,
+      options: props.options
     }
   }
 })

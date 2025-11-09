@@ -1,13 +1,10 @@
 <template>
-  <el-input
-    :type="type"
+  <el-slider
     v-model="selfValue"
-    :placeholder="placeholder || 'Please input'"
     :disabled="disabled"
-    :readonly="readonly"
-    :maxlength="max"
-    :minlength="min"
-    :show-word-limit="!!max"
+    :min="min !== undefined ? min : 0"
+    :max="max !== undefined ? max : 100"
+    :show-input="true"
   />
 </template>
 
@@ -15,25 +12,13 @@
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
-  name: 'Input',
+  name: 'Slider',
   props: {
     value: {
-      type: String,
-      default: ''
-    },
-    type: {
-      type: String,
-      default: 'text'
-    },
-    placeholder: {
-      type: String,
-      default: ''
+      type: Number,
+      default: 0
     },
     disabled: {
-      type: Boolean,
-      default: false
-    },
-    readonly: {
       type: Boolean,
       default: false
     },

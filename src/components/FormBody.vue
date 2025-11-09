@@ -1,8 +1,9 @@
 <template>
   <div
     class="form_body"
+    :class="{ preview_mode: isPreview }"
     data-step="3"
-    data-intro="拖拽可对表单项进行排序👉，也没做"
+    data-intro="拖拽可对表单项进行排序"
   >
     <draggable
       class="form_list"
@@ -13,7 +14,10 @@
     >
       <template #item="{ element }">
         <div
-          :class="['common_wrap', { select_: current === element }]"
+          :class="[
+            'common_wrap',
+            { select_: current === element && !isPreview }
+          ]"
           :style="{ width: element.width }"
           @click="selectPlugin(element)"
         >
@@ -36,8 +40,11 @@ export default defineComponent({
   setup() {
     const store = useStore()
 
+    const isPreview = computed(() => store.state.previewClass)
+
     const dragOption = computed(() => ({
-      animation: 300
+      animation: 300,
+      disabled: isPreview.value // 预览模式下禁用拖拽
     }))
 
     const list = computed<any>({
@@ -50,7 +57,10 @@ export default defineComponent({
     })
 
     const selectPlugin = (item: IConfig) => {
-      store.commit('setCurrentSelectPlugin', item)
+      // 预览模式下不允许选择
+      if (!isPreview.value) {
+        store.commit('setCurrentSelectPlugin', item)
+      }
     }
 
     const current = computed(() => store.state.currentSelectPlugin)
@@ -58,7 +68,8 @@ export default defineComponent({
       list,
       selectPlugin,
       dragOption,
-      current
+      current,
+      isPreview
     }
   }
 })
@@ -72,6 +83,48 @@ export default defineComponent({
   border-radius: 8px;
   background-color: #fff;
 
+  &.preview_mode {
+    height: auto;
+    min-height: 200px;
+    box-shadow: none;
+    border-radius: 0;
+
+    .form_list {
+      .common_wrap {
+        cursor: default;
+
+        &:hover {
+          background-color: transparent;
+        }
+
+        &.select_ {
+          box-shadow: none;
+          background-color: transparent !important;
+        }
+
+        // 预览模式下允许表单输入交互
+        :deep(.el-input__inner),
+        :deep(.el-textarea__inner),
+        :deep(.el-input-number),
+        :deep(.el-input-number__decrease),
+        :deep(.el-input-number__increase),
+        :deep(.el-select),
+        :deep(.el-date-editor),
+        :deep(.el-time-picker),
+        :deep(.el-color-picker),
+        :deep(.el-radio),
+        :deep(.el-checkbox),
+        :deep(.el-rate),
+        :deep(.el-switch),
+        :deep(.el-slider),
+        :deep(.el-cascader),
+        :deep(.el-upload) {
+          pointer-events: auto !important;
+        }
+      }
+    }
+  }
+
   .form_list {
     display: flex;
     flex-wrap: wrap;
@@ -79,7 +132,6 @@ export default defineComponent({
 
     .common_wrap {
       padding: 8px 6px;
-      // border: 2px solid rgb(202, 191, 253);
       border-radius: 6px;
       cursor: move;
       transition: background-color 0.36s,
@@ -94,7 +146,11 @@ export default defineComponent({
         background-color: rgb(247, 247, 247);
       }
 
-      :deep(.el-input__inner) {
+      // 非预览模式下禁止直接输入，只能通过拖拽和配置
+      :deep(.el-input__inner),
+      :deep(.el-textarea__inner),
+      :deep(.el-input-number__decrease),
+      :deep(.el-input-number__increase) {
         pointer-events: none;
       }
     }

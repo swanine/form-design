@@ -16,7 +16,7 @@ const PLUGINS = [
     plugin: 'Textarea'
   },
   {
-    value: '',
+    value: 0,
     name: '计数器',
     id: 3,
     width: '25%',
@@ -29,14 +29,55 @@ const PLUGINS = [
     id: 4,
     width: '50%',
     type: 'dropdown',
-    plugin: 'Dropdown'
+    plugin: 'Dropdown',
+    options: [
+      { label: '选项1', value: '1' },
+      { label: '选项2', value: '2' },
+      { label: '选项3', value: '3' }
+    ]
   },
-  { value: '', name: '时间选择', id: 5, width: '50%', type: 'Timer' },
-  { value: '', name: '颜色选择', id: 6, width: '25%', type: 'Color' },
-  { value: '', name: '按钮', id: 7, width: '25%' },
-  { value: '', name: '文字', id: 8, width: '25%' },
-  { value: '', name: '文字链接', id: 9, width: '50%' },
-  { value: '', name: '按钮', id: 10, width: '50%' }
+  {
+    value: '',
+    name: '日期选择',
+    id: 5,
+    width: '50%',
+    type: 'date',
+    plugin: 'DatePicker'
+  },
+  {
+    value: '#409EFF',
+    name: '颜色选择',
+    id: 6,
+    width: '25%',
+    type: 'color',
+    plugin: 'ColorPicker'
+  },
+  {
+    value: '',
+    name: '单选框',
+    id: 7,
+    width: '50%',
+    type: 'radio',
+    plugin: 'Radio',
+    options: [
+      { label: '选项1', value: '1' },
+      { label: '选项2', value: '2' },
+      { label: '选项3', value: '3' }
+    ]
+  },
+  {
+    value: [],
+    name: '多选框',
+    id: 8,
+    width: '50%',
+    type: 'checkbox',
+    plugin: 'Checkbox',
+    options: [
+      { label: '选项1', value: '1' },
+      { label: '选项2', value: '2' },
+      { label: '选项3', value: '3' }
+    ]
+  }
 ]
 
 export default PLUGINS

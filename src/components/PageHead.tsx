@@ -5,11 +5,32 @@ import Rbutton from '../rosy-ui/button/index'
 export default defineComponent({
   setup() {
     const store = useStore()
-    const handleClick = () => {
+
+    const handlePreview = () => {
       store.commit('changePreview', true)
+      // 清除选中状态
+      store.commit('setCurrentSelectPlugin', { name: '' })
+    }
+
+    const handleClosePreview = () => {
+      store.commit('changePreview', false)
+    }
+
+    // 监听 ESC 键关闭预览
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && store.state.previewClass) {
+        handleClosePreview()
+      }
+    }
+
+    // 添加键盘事件监听
+    if (typeof window !== 'undefined') {
+      window.addEventListener('keydown', handleKeyDown)
     }
 
     return () => {
+      const isPreview = store.state.previewClass
+
       return (
         <>
           <header class="head__container">
@@ -17,9 +38,13 @@ export default defineComponent({
             <div
               class="button_group"
               data-step="4"
-              data-intro="最后点击预览查看你设计的表单，当然实现这个功能还早着呢😅"
+              data-intro="点击预览查看你设计的表单效果"
             >
-              <Rbutton onClick={handleClick}>预览</Rbutton>
+              {isPreview ? (
+                <Rbutton onClick={handleClosePreview}>关闭预览 (ESC)</Rbutton>
+              ) : (
+                <Rbutton onClick={handlePreview}>预览</Rbutton>
+              )}
             </div>
           </header>
         </>

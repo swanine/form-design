@@ -1,13 +1,11 @@
 <template>
-  <el-input
-    :type="type"
+  <el-date-picker
     v-model="selfValue"
-    :placeholder="placeholder || 'Please input'"
+    type="date"
+    :placeholder="placeholder || '选择日期'"
     :disabled="disabled"
     :readonly="readonly"
-    :maxlength="max"
-    :minlength="min"
-    :show-word-limit="!!max"
+    style="width: 100%"
   />
 </template>
 
@@ -15,15 +13,11 @@
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
-  name: 'Input',
+  name: 'DatePicker',
   props: {
     value: {
       type: String,
       default: ''
-    },
-    type: {
-      type: String,
-      default: 'text'
     },
     placeholder: {
       type: String,
@@ -36,14 +30,6 @@ export default defineComponent({
     readonly: {
       type: Boolean,
       default: false
-    },
-    min: {
-      type: Number,
-      default: undefined
-    },
-    max: {
-      type: Number,
-      default: undefined
     }
   },
   setup(props) {

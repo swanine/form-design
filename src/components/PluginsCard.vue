@@ -44,8 +44,8 @@ export default defineComponent({
       default: () => []
     }
   },
-  setup() {
-    const list = ref(PLUGINS)
+  setup(props) {
+    const list = ref(props.pluginsList.length > 0 ? props.pluginsList : PLUGINS)
 
     const dragOption = computed(() => ({
       animation: 200

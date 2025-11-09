@@ -12,12 +12,24 @@ export default defineComponent({
     return () => {
       return (
         <>
-          <div class="plugin_title">{props.config?.name}</div>
+          <div class="plugin_title">
+            {props.config?.name}
+            {props.config?.required && <span class="required_mark">*</span>}
+          </div>
           {plugins.map((item) => {
             if (props.config?.plugin === item.name) {
-              console.log(item)
               return (
-                <item value={props.config?.value} type={props.config?.type} />
+                <item
+                  value={props.config?.value}
+                  type={props.config?.type}
+                  options={props.config?.options}
+                  rows={props.config?.rows}
+                  placeholder={props.config?.placeholder}
+                  disabled={props.config?.disabled}
+                  readonly={props.config?.readonly}
+                  min={props.config?.min}
+                  max={props.config?.max}
+                />
               )
             }
           })}

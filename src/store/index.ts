@@ -5,14 +5,65 @@ import PLUGINS from '../components/plugins/publicPlugins'
 const store = createStore<IRootState>({
   state() {
     return {
-      formPluginList: [...PLUGINS],
+      formPluginList: [
+        {
+          value: '',
+          name: '姓名',
+          id: 1001,
+          width: '50%',
+          type: 'text',
+          plugin: 'Input'
+        },
+        {
+          value: '',
+          name: '邮箱',
+          id: 1002,
+          width: '50%',
+          type: 'text',
+          plugin: 'Input'
+        },
+        {
+          value: '',
+          name: '个人简介',
+          id: 1003,
+          width: '100%',
+          type: 'textarea',
+          plugin: 'Textarea'
+        },
+        {
+          value: '',
+          name: '性别',
+          id: 1004,
+          width: '50%',
+          type: 'radio',
+          plugin: 'Radio',
+          options: [
+            { label: '男', value: 'male' },
+            { label: '女', value: 'female' }
+          ]
+        },
+        {
+          value: [],
+          name: '兴趣爱好',
+          id: 1005,
+          width: '100%',
+          type: 'checkbox',
+          plugin: 'Checkbox',
+          options: [
+            { label: '阅读', value: 'reading' },
+            { label: '运动', value: 'sport' },
+            { label: '音乐', value: 'music' },
+            { label: '旅游', value: 'travel' }
+          ]
+        }
+      ],
       currentSelectPlugin: {
         name: ''
       },
       previewClass: false,
       formInfo: {
-        name: '',
-        description: '',
+        name: '用户信息表',
+        description: '请填写您的个人信息',
         formStyle: ''
       }
     }
